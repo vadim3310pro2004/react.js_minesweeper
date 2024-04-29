@@ -1,0 +1,74 @@
+
+@font-face {
+  font-family: Minecraft Ten;
+  src: url("shared/assets/minecraft.ttf");
+}
+
+:root {
+  color-scheme: dark;
+  --body-bg: #222;
+  --color1: #333;
+  --color2: #444;
+  --color3: #555;
+  --color4: #666;
+  --fc: #bbb;
+}
+
+:root[theme='light'] {
+  color-scheme: light;
+  --body-bg: #bbb;
+  --color1: #aaa;
+  --color2: #999;
+  --color3: #888;
+  --color4: #777;
+  --fc: #222;
+}
+
+:root {
+  --ff: Minecraft Ten;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--body-bg);
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    background-color: #00000000;
+    width: 0;
+  }
+}
+
+#root {
+  min-height: 100vh;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+#root,
+input,
+button,
+a {
+  border: 0;
+  border-radius: 0;
+  font-family: var(--ff);
+  color: var(--fc);
+  text-decoration: 0;
+
+  &:focus-visible {
+    outline: 2px solid var(--fc);
+  }
+}
+
+svg {
+  fill: var(--fc); 
+}
+
+:root, body, #root {
+  height: 100%;
+}

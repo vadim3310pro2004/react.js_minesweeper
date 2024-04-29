@@ -1,0 +1,22 @@
+
+
+.loader {
+    opacity: .5;
+    background-image: repeating-linear-gradient(
+        to right,
+        black,
+        black 10px,
+        #00000000 10px,
+        #00000000 30px,
+    );
+    animation: loader 20s linear infinite;
+}
+
+@keyframes loader {
+    from {
+        background-position: -100vw;
+    }
+    to {
+        background-position: 100vw;
+    }
+}

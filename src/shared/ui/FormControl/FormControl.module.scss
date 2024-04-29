@@ -1,0 +1,36 @@
+
+.message, .error {
+    padding: 0 5px;
+    margin: 0 5px;    
+    border-radius: 5px;
+}
+
+.error {
+    background-color: #ffffff60;
+    color: #922;
+}
+
+.formControl {
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    background-color: #00000060;
+    font-size: calc(var(--font-size) * .7);
+}
+:root[theme='light'] {
+    .message {
+        background-color: #bbbbbb60;
+    }
+}
+
+.input {
+    border: 0;
+    font-size: var(--font-size);
+    border-radius: 0;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background-color: var(--color1);
+}
+

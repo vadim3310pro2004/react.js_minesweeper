@@ -1,0 +1,28 @@
+
+.root {
+    >*:nth-child(2) {
+        max-width: 150px;
+
+        >a {
+            text-wrap: wrap;
+            overflow-wrap: break-word;
+            text-align: center;
+            display: block;
+        }
+    }
+}
+
+
+.iconButton {
+    height: 40px;
+
+    img, svg {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+
+.nowrap {
+    text-wrap: nowrap;
+}

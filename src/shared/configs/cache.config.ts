@@ -1,0 +1,1 @@
+export const USER_DATA_CACHE_KEY = 'USER_DATA_CACHE_KEY'

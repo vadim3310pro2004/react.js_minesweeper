@@ -1,0 +1,45 @@
+
+
+.root {
+    padding: 5px;
+    overflow: hidden;
+    user-select: none;
+    font-size: 200%;
+    padding: 0;
+    transition: background-color .4s;
+    
+    svg, img {
+        height: 70%;
+        width: 70%;
+    }
+
+    &:focus-visible {
+        outline: 4px solid firebrick;
+    }
+}
+
+.root.success {
+    background-color: #343;
+}
+
+.root.mine {
+    background-color: #300;
+}
+
+.root.marked {
+    background-color: #888;
+}
+
+:root[theme='light'] {
+    .root.success {
+        --fc: white;
+        background-color: #575;
+    }
+}
+
+
+@media (max-width: 425px), (max-height: 425px) {
+    .root {
+        font-size: 20px;
+    }
+}

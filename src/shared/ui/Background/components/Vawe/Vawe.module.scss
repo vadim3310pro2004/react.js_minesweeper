@@ -1,0 +1,33 @@
+
+
+.vawe {
+    border-radius: 50%;
+}
+
+.vawe {
+    animation: vawe 6s linear infinite;
+
+    border-width: 5px;
+    border-style: solid;
+
+    $childs: 2, 3, 4;
+
+    @each $child in $childs {
+        &:nth-child(#{$child}) {
+            animation-delay: ($child - 1) * -2s;
+        }
+    }
+}
+
+
+@keyframes vawe {
+    from {
+        scale: 1;
+        rotate: 0;
+    }
+    
+    to {
+        scale: 3;
+        opacity: 0;
+    }
+}

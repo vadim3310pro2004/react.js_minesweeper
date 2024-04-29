@@ -1,0 +1,65 @@
+
+.root {
+    display: inline-flex;
+    flex-direction: column;
+    height: fit-content;
+    position: relative;
+}
+
+.root.close {
+    border: 0;
+}
+
+.body {
+    background-color: rgb(from var(--color1) r g b / .5);
+    gap: 5px;
+    border-radius: 10px;
+    padding: 5px;
+    display: flex;
+    left: -5px;
+    top: calc(100% + 5px);
+    min-width: calc(100% + 8px);
+    overflow: auto;
+    flex-direction: column;
+    position: absolute;
+    z-index: 2;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+$animation-time: .4s;
+
+.entering {
+    animation: entering $animation-time;
+}
+
+@keyframes entering {
+    from {
+        transform: scaleY(.5) translateY(-100%);
+        opacity: 0;
+    } to {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+.exiting {
+    animation: exiting $animation-time;
+    transform: scaleY(0);
+}
+
+@keyframes exiting {
+    from {
+        opacity: 1;
+        transform: scaleY(1) translateY(0%);
+    } to {
+        opacity: 0;
+        transform: scaleY(0.5) translateY(100%);
+    }
+}
+
+.exitDone {
+    display: none;
+}

@@ -1,0 +1,17 @@
+
+.root {
+    display: grid;
+    place-items: center;
+}
+
+.vawe, .image { 
+    position: absolute;
+    max-width: 300px;
+    max-height: 300px;
+    width: 90vmin;
+    height: 90vmin;
+}
+
+.image {
+    z-index: 1;
+}

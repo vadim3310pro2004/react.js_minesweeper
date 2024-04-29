@@ -1,0 +1,29 @@
+
+
+.root {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 3%;
+}
+
+.toolbar {
+    display: flex;
+    gap: 10px;
+}
+
+.nowrap {
+    text-wrap: nowrap;
+}
+
+@media (max-width: 350px) {
+    .root {
+        padding: 0;
+
+        >* {
+            background: 0;
+            padding: 0;
+            gap: 0;
+            display: contents;
+        }
+    }
+}
