@@ -1,0 +1,1 @@
+const o=n=>{if(n>=5999)return"99:99";let t="";const r=String(Math.floor(n/60)),e=String(Math.round(n-Number(r)*60));return r.length===2?t=`${r}`:t=`0${r}`,t+=":",e.length===2?t+=e:t+="0"+e,t};export{o as t};
