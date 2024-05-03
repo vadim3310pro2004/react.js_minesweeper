@@ -37,6 +37,7 @@ const Players: FC<PlayersProps> = ({ isLoading, players }) => {
                     userName={item.user_name}
                     topFiveScores={item.top_5_scores}
                     totalGames={item.total_games}
+                    averangeResoult={item.averange_resoult}
                 />
             ))}
         </div>

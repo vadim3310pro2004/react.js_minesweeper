@@ -6,11 +6,17 @@ import { timeFormaterMMSS } from "shared/utils/timeFormators";
 export interface PlayerCardProps {
     totalGames: number;
     topFiveScores: number[];
-    userName: string
+    userName: string;
+    averangeResoult: number;
 };
 
 
-const PlayerCard: FC<PlayerCardProps> = ({ totalGames, topFiveScores, userName }) => (
+const PlayerCard: FC<PlayerCardProps> = ({ 
+    totalGames, 
+    topFiveScores, 
+    userName,
+    averangeResoult
+}) => (
     <table className={styles.playerCard}>
         <caption>
             {userName}
@@ -22,6 +28,14 @@ const PlayerCard: FC<PlayerCardProps> = ({ totalGames, topFiveScores, userName }
                 </th>
                 <td>
                     {totalGames}
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    averange time
+                </th>
+                <td>
+                    {averangeResoult}
                 </td>
             </tr>
             <tr>

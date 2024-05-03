@@ -29,7 +29,7 @@ export interface getPlayerResponse {
     user: number;
     user_name: string;
     success_games: number;
-    averange_resoult: string;
+    averange_resoult: number;
 }
 
 export interface FetchListPlayerResponse {
