@@ -8,14 +8,20 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
   key: 'root',
   storage,
-  whiteList: ['window'],
+  blacklist: ["window", "accounts"],
 };
+
+const windowPersistConfig = {
+  key: 'window',
+  storage: storage,
+  blacklist: ['modal']
+}
 
 const rootReducer = persistReducer(
   persistConfig, 
   combineReducers({
     accounts: accountsReducer,
-    window: windowReducer,
+    window: persistReducer(windowPersistConfig, windowReducer),
   })
 );
 

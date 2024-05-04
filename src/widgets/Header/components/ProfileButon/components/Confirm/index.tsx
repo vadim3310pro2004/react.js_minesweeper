@@ -18,6 +18,7 @@ const Confirm: FC<ConfirmProps> = ({
         className,
         styles.confirm,
     ); 
+    
 
     return (
         <div className={classes}>
