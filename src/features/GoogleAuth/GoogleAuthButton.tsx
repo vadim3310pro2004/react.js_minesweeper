@@ -1,4 +1,6 @@
 import { 
+    CodeResponse,
+    TokenResponse,
     useGoogleLogin
 } from "@react-oauth/google";
 import { updateUserData } from "entities/user/store/account.slice";
@@ -23,9 +25,11 @@ const GoogleAuthButton: FC<GoogleAuthButtonProps> = ({ className, ...props }) =>
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     
-    const handleSuccess = async ({ credential }: any) => {
-        if (credential) {
-            await loginByGoogleJwt({ token: credential });
+    const handleSuccess = async (response: TokenResponse | CodeResponse) => {
+        // console.log();
+        // console.log(response);
+        if ("access_token" in response) {
+            await loginByGoogleJwt({ token: response.access_token });
             dispatch(updateUserData([]));
             navigate('/profile/');
         }
@@ -36,6 +40,7 @@ const GoogleAuthButton: FC<GoogleAuthButtonProps> = ({ className, ...props }) =>
 
     const login = useGoogleLogin({
         onSuccess: (data) => {handleSuccess(data)},
+        // onError: console.log,
     });
       
 

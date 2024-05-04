@@ -30,6 +30,7 @@ const ProfileButton: FC<ProfileButtonProps> = ({ isAutentificated }) => {
                 dispatch(logout());
                 navigate('/');
                 removeAccessToken();
+                dispatch(setModalIsOpen(false))
             }} 
             onReject={() => {
                 dispatch(setModalIsOpen(false))
