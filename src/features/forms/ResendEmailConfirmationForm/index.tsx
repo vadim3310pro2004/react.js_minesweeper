@@ -5,10 +5,12 @@ import { Button, FormControl } from "shared/ui";
 import BaseAuthForm from "../BaseAuthForm";
 
 import { emailValidator } from "shared/utils/validators";
-import resendEmailConfirmation from "entities/accounts/api/resendEmailConfirmation";
+import resendEmailConfirmation from "entities/user/api/resendEmailConfirmation";
 import { AxiosError } from "axios";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import useModal from "entities/window/hooks/useModal";
+import apiErrorFormatter from "shared/utils/apiErrorFormatter";
 
 
 export interface ResendEmailConfirmationFormProps extends ComponentPropsWithoutRef<'div'> { }
@@ -26,6 +28,7 @@ export const schema = yup.object().shape({
 const ResendEmailConfirmationForm: FC<ResendEmailConfirmationFormProps> = ({
     className 
 }) => {
+    const openModal = useModal();
     const { 
         handleSubmit, 
         register, 
@@ -43,12 +46,12 @@ const ResendEmailConfirmationForm: FC<ResendEmailConfirmationFormProps> = ({
         reset()
         try {
             await resendEmailConfirmation(data)
-            alert('Надіслано нове письмо для підтвердження пошти');
+            openModal('Надіслано нове письмо для підтвердження пошти');
         }
         catch (error: AxiosError | any) {
-            alert(
-                JSON.stringify(
-                    (error as AxiosError).response?.data
+            openModal(
+                apiErrorFormatter(
+                    error.response?.data
                 )
             );
         }

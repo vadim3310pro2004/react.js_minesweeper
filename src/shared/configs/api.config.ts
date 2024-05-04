@@ -1,5 +1,5 @@
-import instance from "entities/accounts/api/instances/instance";
-import instanceWithAuth from "entities/accounts/api/instances/instanceWithAuth";
+import instance from "entities/user/api/instances/instance";
+import instanceWithAuth from "entities/user/api/instances/instanceWithAuth";
 
 
 export const INSTANCE_WITH_AUTH = instanceWithAuth;

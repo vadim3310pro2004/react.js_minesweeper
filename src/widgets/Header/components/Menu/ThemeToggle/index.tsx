@@ -1,6 +1,6 @@
 import { memo, useEffect } from "react";
 
-import { setTheme } from "entities/accounts/store/account.slice";
+import { setTheme } from "entities/window/store/window.slice";
 import { useAppDispatch, useAppSelector } from "shared/hooks";
 import { setColorScheme } from "./theme.services";
 import { Button } from "shared/ui";
@@ -11,7 +11,7 @@ import night from 'shared/assets/moon.svg';
 
 
 const ThemeToggle = memo(() => {
-    const theme = useAppSelector(state => state.accounts.colorScheme);
+    const theme = useAppSelector(state => state.window.colorScheme);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -19,9 +19,9 @@ const ThemeToggle = memo(() => {
             dispatch(
                 setTheme(
                     window
-                        .matchMedia('(prefers-color-scheme: dark)')
-                        .matches ?
-                        'dark' : 'light'
+                    .matchMedia('(prefers-color-scheme: dark)')
+                    .matches ?
+                    'dark' : 'light'
                 )
             );
         }

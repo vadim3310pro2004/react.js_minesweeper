@@ -6,7 +6,6 @@ import { fetchUserData } from "../api/accounts.api";
 export type ColorScheme = 'dark' | 'light';
 
 export interface AccountsState {
-    colorScheme?: ColorScheme;
     user: {
         name?: string;
         id?: number;
@@ -16,23 +15,19 @@ export interface AccountsState {
     },
 }
 
-
-const initialState: AccountsState = {
+const initialState = {
     user: {
         isAuthorized: false,
     },
-};
+} satisfies AccountsState as AccountsState;
 
 
 const slice = createAppSlice({
     name: 'accounts',
-    initialState: initialState satisfies AccountsState as AccountsState,
+    initialState,
 
     reducers: (create) => ({
-        setTheme: create.reducer<ColorScheme>((state, { payload }) => {
-            state.colorScheme = payload;
-        }),
-        
+
         logout: create.reducer(state => {
             state.user = {
                 isAuthorized: false,
@@ -67,7 +62,6 @@ const slice = createAppSlice({
 
 export const accountsReducer = slice.reducer;
 export const { 
-    setTheme,
     updateUserData,
     logout,
 } = slice.actions;

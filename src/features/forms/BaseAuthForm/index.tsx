@@ -16,6 +16,7 @@ const BaseAuthForm: FC<BaseAuthFormProps> = ({
     buttons,
     ...props 
 }) => {
+
     return (
         <form
             className={clsx(className, styles.root)}

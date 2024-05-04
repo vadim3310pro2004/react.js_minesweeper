@@ -5,17 +5,20 @@ import { FormControl } from "shared/ui/";
 import { Button } from "shared/ui/";
 import BaseAuthForm from "../BaseAuthForm";
 
-import { RegistrationRequest } from "entities/accounts/api/accounts.models";
-import { registrate } from "entities/accounts";
+import { RegistrationRequest } from "entities/user";
+import { registrate } from "entities/user/"
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registrationSchema } from "shared/utils/validators";
 import { AxiosError } from "axios";
+import useModal from "entities/window/hooks/useModal";
+import apiErrorFormatter from "shared/utils/apiErrorFormatter";
 
 
 export interface LoginFormProps extends ComponentPropsWithoutRef<'form'> { }
 
 
 const RegistrationForm : FC<LoginFormProps> = ({ className }) => {
+    const openModal = useModal(); 
     const { 
         handleSubmit, 
         register, 
@@ -38,11 +41,11 @@ const RegistrationForm : FC<LoginFormProps> = ({ className }) => {
 
             await registrate(data);
 
-            alert("Підтвердіть пошту. На вашу пошту прийшло повідомлення з кнопкою 'Підтвердити пошту'")
+            openModal("Підтвердіть пошту. На вашу пошту прийшло повідомлення з кнопкою 'Підтвердити пошту'")
         } catch (error: AxiosError | any) {
-            alert(
-                JSON.stringify(
-                    (error as AxiosError).response?.data
+            openModal(
+                apiErrorFormatter(
+                    error.response?.data
                 )
             );
         }
@@ -53,7 +56,7 @@ const RegistrationForm : FC<LoginFormProps> = ({ className }) => {
             className={className}
             onSubmit={handleSubmit(submit)}
             buttons={[
-                <Button component="a" to="/resend-email-confirmation/">confirm email</Button>,
+                <Button component="a" to="/resend-email-confirmation/">activate email</Button>,
                 <Button component="a" to="/login/">sign-in</Button>,
                 <Button disabled={!isValid} variant="success">send</Button>,
             ]}

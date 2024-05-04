@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import styles from './Players.module.scss';
-import { getPlayerResponse } from "entities/minesweeper/api/models";
+import { getPlayerResponse } from "entities/player/api/models";
 
 import Loader from "shared/ui/Loader";
 import PlayerCard from "./PlayerCard";

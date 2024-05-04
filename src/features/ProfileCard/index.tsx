@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, FC } from 'react';
 import { useAppSelector } from 'shared/hooks';
-import useMyStats from 'entities/minesweeper/hooks/useMyStats';
+import useMyStats from 'entities/player/hooks/useMyStats';
 
 import styles from './ProfileCard.module.scss';
 import clsx from 'clsx';

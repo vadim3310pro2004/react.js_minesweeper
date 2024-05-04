@@ -1,7 +1,7 @@
 import { RouterProvider, RouterProviderProps } from "react-router-dom";
 import router from "./router";
 import { FC, } from "react";
-import { updateUserData } from "entities/accounts/store/account.slice";
+import { updateUserData } from "entities/user/store/account.slice";
 import { useAppDispatch } from "shared/hooks";
 
 

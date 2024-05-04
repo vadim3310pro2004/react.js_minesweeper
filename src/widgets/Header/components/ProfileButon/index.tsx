@@ -3,12 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "shared/hooks";
 
 import styles from './ProfileButton.module.scss';
-import { logout } from "entities/accounts/store/account.slice";
-import { removeAccessToken } from "entities/accounts/api/api.services";
+import { logout } from "entities/user/store/account.slice";
+import { removeAccessToken } from "entities/user/api/api.services";
 
 import { Button } from "shared/ui";
 import DropMenu from "shared/ui/DropMenu";
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
+import useModal from "entities/window/hooks/useModal";
+import Confirm from "./components/Confirm";
+import { setModalIsOpen } from "entities/window/store/window.slice";
 
 
 export interface ProfileButtonProps {
@@ -19,15 +22,19 @@ export interface ProfileButtonProps {
 const ProfileButton: FC<ProfileButtonProps> = ({ isAutentificated }) => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    
+    const openModal = useModal();
+
     const handleLogout = () => {
-        if (
-            confirm('you sure wont to logout ?')
-        ) {
-            dispatch(logout());
-            navigate('/');
-            removeAccessToken();
-        }
+        openModal(<Confirm 
+            onSuccess={() => {
+                dispatch(logout());
+                navigate('/');
+                removeAccessToken();
+            }} 
+            onReject={() => {
+                dispatch(setModalIsOpen(false))
+            }}
+        />)
     };
 
     if (isAutentificated) {
@@ -90,7 +97,7 @@ const ProfileButton: FC<ProfileButtonProps> = ({ isAutentificated }) => {
                 component='a'
                 to='resend-email-confirmation'
             >
-                resend email confirmation
+                activate email
             </Button>
         </DropMenu>
     );

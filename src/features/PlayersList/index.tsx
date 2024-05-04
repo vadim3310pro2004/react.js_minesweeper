@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, FC, useState } from 'react';
 import styles from './PlayersList.module.scss';
 import clsx from 'clsx';
-import usePlayersList from 'entities/minesweeper/hooks/usePlayersList';
+import usePlayersList from 'entities/player/hooks/usePlayersList';
 import Paginator from './Paginator';
 import Players from './Players';
 

@@ -3,7 +3,7 @@ import { MinesweeperState, getInitialState } from "../utils";
 import minesweeperReducer from "./reducers/gameReducer";
 import stopwatchReducer, { StopwatchPayload } from "./reducers/timeReducer";
 import { gameContext, menuContext } from "./contexts";
-import { sendNewLose, sendNewVictory } from "entities/minesweeper/api/sendNewResoult.api";
+import { sendNewLose, sendNewVictory } from "entities/player/api/sendNewResoult.api";
 import { useAppSelector } from "shared/hooks";
 
 

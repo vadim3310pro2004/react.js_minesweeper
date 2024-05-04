@@ -7,12 +7,14 @@ import { Button } from "shared/ui/";
 
 import { loginSchema } from "shared/utils/validators";
 import { LoginRequest } from "shared/models";
-import { login } from "entities/accounts";
+import { login } from "entities/user";
 import { useAppDispatch } from "shared/hooks";
-import { updateUserData } from "entities/accounts/store/account.slice";
+import { updateUserData } from "entities/user/store/account.slice";
 import { useNavigate } from "react-router-dom";
 import BaseAuthForm from "../BaseAuthForm";
 import { AxiosError } from "axios";
+import useModal from "entities/window/hooks/useModal";
+import apiErrorFormatter from "shared/utils/apiErrorFormatter";
 
 
 export interface LoginFormProps extends ComponentPropsWithoutRef<'form'> { }
@@ -20,6 +22,7 @@ export interface LoginFormProps extends ComponentPropsWithoutRef<'form'> { }
 
 const Login: FC<LoginFormProps> = ({ className }) => {
     const dispatch = useAppDispatch();
+    const openModal = useModal();
     const navigate = useNavigate();
     const { 
         handleSubmit, 
@@ -43,9 +46,9 @@ const Login: FC<LoginFormProps> = ({ className }) => {
             dispatch(updateUserData([]));
             navigate('/profile/');
         } catch (error: AxiosError | any) {
-            alert(
-                JSON.stringify(
-                    (error as AxiosError).response?.data
+            openModal(
+                apiErrorFormatter(
+                    error.response?.data
                 )
             );
         }
@@ -56,7 +59,7 @@ const Login: FC<LoginFormProps> = ({ className }) => {
             className={className}
             onSubmit={handleSubmit(submit)}
             buttons={[
-                <Button component="a" to="/resend-email-confirmation/">confirm email</Button>,
+                <Button component="a" to="/resend-email-confirmation/">activate email</Button>,
                 <Button component="a" to="/registration/">sign-up</Button>,
                 <Button disabled={!isValid} variant="success">send</Button>,
             ]}

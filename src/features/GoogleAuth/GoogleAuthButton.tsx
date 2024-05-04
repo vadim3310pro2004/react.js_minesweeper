@@ -1,24 +1,25 @@
 import { 
     useGoogleLogin
 } from "@react-oauth/google";
-import { updateUserData } from "entities/accounts/store/account.slice";
+import { updateUserData } from "entities/user/store/account.slice";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "shared/hooks";
 
-import loginByGoogleJwt from "entities/accounts/api/loginByGoogleJWT";
+import loginByGoogleJwt from "entities/user/api/loginByGoogleJWT";
 import styles from './GoogleAuthButton.module.scss';
 import clsx from "clsx";
 
 import { Button } from "shared/ui";
 import { ComponentPropsWithoutRef, FC } from "react";
 import GoogleLogoPixelSvg from "shared/assets/GoogleLogoPixel";
+import useModal from "entities/window/hooks/useModal";
 
 
 export interface GoogleAuthButtonProps extends ComponentPropsWithoutRef<'button'> { }
 
 
 const GoogleAuthButton: FC<GoogleAuthButtonProps> = ({ className, ...props }) => {
-
+    const openModal = useModal();
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     
@@ -29,7 +30,7 @@ const GoogleAuthButton: FC<GoogleAuthButtonProps> = ({ className, ...props }) =>
             navigate('/profile/');
         }
         else {
-            alert('error');
+            openModal('error');
         }
     };
 
