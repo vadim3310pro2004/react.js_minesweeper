@@ -14,16 +14,3 @@
 .nowrap {
     text-wrap: nowrap;
 }
-
-@media (max-width: 350px) {
-    .root {
-        padding: 0;
-
-        >* {
-            background: 0;
-            padding: 0;
-            gap: 0;
-            display: contents;
-        }
-    }
-}

@@ -1,7 +1,7 @@
 import { FC, useContext } from "react";
 import clsx from "clsx";
 import Cell from "./Cell";
-import styles from './Body.module.scss';
+import styles from './MinesField.module.scss';
 import Alert from "./Alert";
 import { gameContext } from "../../StateProvider/contexts";
 
@@ -22,7 +22,7 @@ const Game: FC<GameProps> = ({ className }) => {
     
     const classes = clsx(
         className,
-        styles.minesCanvas,
+        styles.minesField,
     );
 
     return (

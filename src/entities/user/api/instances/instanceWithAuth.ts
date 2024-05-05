@@ -28,6 +28,7 @@ instanceWithAuth.interceptors.request.use(config => {
 instanceWithAuth.interceptors.response.use(config => config, async (error) => {
     const originalConfig = error.config;
     const token = getAccessToken();
+    console.log("in interceptor");
     
     if (
         error.response?.status === 401 
@@ -57,10 +58,10 @@ const refresh = async () => {
 
         if (token) {
             setAccessToken(token);
+            console.log("success");
             
             return response;
         } else {
-            
             removeAccessToken();
             
             throw new Error('Refresh response have not access token');

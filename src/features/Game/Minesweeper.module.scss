@@ -2,11 +2,20 @@
 .root {
     width: 85vmin;
     height: 85vmin;
-    padding: 5px;
-    border-radius: 10px;
+    max-height: 600px;
+    max-width: 600px;
+    padding: .8vmin;
+    border-radius: 3%;
     background-color: rgba(#000, 0.7);
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(9, 1fr);
     gap: .8vmin;
+}
+
+@media (min-width: 705px) and (min-height: 705px) {
+    .root {
+        gap: 7px;
+        padding: 7px;
+    }
 }
