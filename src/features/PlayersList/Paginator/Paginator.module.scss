@@ -1,9 +1,17 @@
+@supports (
+    background-color: rgb(from var(--color1) r g b / .5)
+) {
+    .pagination {
+        background-color: rgb(from var(--color1) r g b / .5);
+    }
+}
+
 .pagination {
     padding: 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(from var(--color1) r g b / .5);
+    background-color: var(--color1);
     border-radius: 20px;
     margin: 0 auto;
     width: 100%;

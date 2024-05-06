@@ -1,8 +1,7 @@
 
 
 .playerCard {
-    background-color: rgb(from var(--color2) r g b / .3);
-    backdrop-filter: blur(5px);
+    background-color: var(--color2);
     
     padding: 10px;
     border-radius: 20px;
@@ -38,5 +37,12 @@
             margin: 0;
             padding-left: 20px;
         }
+    }
+}
+
+@supports (backdrop-filter: blur(5px)) {
+    .playerCard {
+        background-color: rgb(from var(--color2) r g b / .3);
+        backdrop-filter: blur(5px);
     }
 }
